@@ -4,12 +4,12 @@
  * @author Anton Belousov
  * @since SNAPSHOT-0.0.1
  */
-const App = () => {
+const CategoryProjects = () => {
   return (
       <div>
-
+        
       </div>
   );
 };
 
-export default App;
+export default CategoryProjects;

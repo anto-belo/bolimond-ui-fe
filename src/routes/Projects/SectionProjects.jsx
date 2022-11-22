@@ -4,7 +4,7 @@
  * @author Anton Belousov
  * @since SNAPSHOT-0.0.1
  */
-const App = () => {
+const SectionProjects = () => {
   return (
       <div>
 
@@ -12,4 +12,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default SectionProjects;
