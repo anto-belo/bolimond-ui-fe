@@ -1,5 +1,3 @@
-// @flow
-
 /**
  * @author Anton Belousov
  * @since SNAPSHOT-0.0.1

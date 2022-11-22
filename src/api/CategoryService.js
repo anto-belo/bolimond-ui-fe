@@ -1,4 +1,3 @@
-// @flow
 import axios from 'axios';
 import './axios.config';
 
@@ -17,7 +16,7 @@ export class CategoryService {
    * have specified section as their parent, if the sectionId was specified;
    * otherwise - ordered list of categories from all the sections
    */
-  static getByPageOrdered(page: number, size: number, sectionId: ?number) {
+  static getByPageOrdered(page, size, sectionId) {
     return axios.get('/categories', {
       params: {
         page: page,
@@ -32,7 +31,7 @@ export class CategoryService {
    * @param sectionUrl section part of the URL
    * @return appropriate category
    */
-  static getByUrl(url: string, sectionUrl: string) {
+  static getByUrl(url, sectionUrl) {
     return axios.get('/category/byUrl', {
       params: {
         categoryUrl: url,

@@ -1,4 +1,3 @@
-// @flow
 import axios from 'axios';
 import './axios.config';
 
@@ -13,7 +12,7 @@ export class IconService {
    * @param size page size
    * @return ordered list of "response" DTOs of icons
    */
-  static getByPageOrdered(page: number, size: number) {
+  static getByPageOrdered(page, size) {
     return axios.get('/icons', {
       params: {
         page: page,

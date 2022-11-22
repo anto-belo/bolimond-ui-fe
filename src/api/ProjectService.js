@@ -1,4 +1,3 @@
-// @flow
 import axios from 'axios';
 import './axios.config';
 
@@ -15,11 +14,7 @@ export class ProjectService {
    * @param size page size
    * @return list of projects in sectionUrl/categoryUrl
    */
-  static getProjectCards(
-      categoryUrl: string,
-      sectionUrl: string,
-      page: number,
-      size: number) {
+  static getProjectCards(categoryUrl, sectionUrl, page, size) {
     return axios.get('/project-cards', {
       params: {
         categoryUrl: categoryUrl,
@@ -36,10 +31,7 @@ export class ProjectService {
    * @param projectUrl  project url
    * @return project, located on sectionUrl/categoryUrl/projectUrl
    */
-  static getProject(
-      projectUrl: string,
-      categoryUrl: string,
-      sectionUrl: string) {
+  static getProject(projectUrl, categoryUrl, sectionUrl) {
     return axios.get('/project/byUrl', {
       params: {
         projectUrl: projectUrl,

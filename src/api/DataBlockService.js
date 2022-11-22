@@ -1,4 +1,3 @@
-// @flow
 import axios from 'axios';
 import './axios.config';
 
@@ -13,7 +12,7 @@ export class DataBlockService {
    * @param size page size
    * @return ordered list of "response" DTOs of main page blocks
    */
-  static getMainPageBlocksOrdered(page: number, size: number) {
+  static getMainPageBlocksOrdered(page, size) {
     return axios.get('/main-page/blocks', {
       params: {
         page: page,
@@ -32,11 +31,11 @@ export class DataBlockService {
    * @return ordered list of "response" DTOs of blocks of the specified project
    */
   static getProjectBlocksOrdered(
-      sectionUrl: string,
-      categoryUrl: string,
-      projectUrl: string,
-      page: number,
-      size: number) {
+      sectionUrl,
+      categoryUrl,
+      projectUrl,
+      page,
+      size) {
     return axios.get('/project/blocks/byUrl', {
       params: {
         sectionUrl: sectionUrl,
