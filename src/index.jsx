@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import App from './routes/App/App';
+import App, {__loader as appLoader} from './routes/App/App';
 import Carousel from './routes/Carousel/Carousel';
 import CategoryProjects from './routes/Projects/CategoryProjects';
 import Error from './routes/Error/Error';
 import Project from './routes/Project/Project';
 import Projects from './routes/Projects/Projects';
 import SectionProjects from './routes/Projects/SectionProjects';
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 /**
  * @author Anton Belousov
@@ -19,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         {
           path: '/',
           element: <App/>,
+          loader: appLoader,
           errorElement: <Error/>,
           children: [
             {
@@ -26,7 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               element: <Carousel/>
             },
             {
-              path: '/:sectionUrl',
+              path: ':sectionUrl',
               element: <Projects/>,
               children: [
                 {
@@ -34,17 +37,19 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                   element: <SectionProjects/>
                 },
                 {
-                  path: '/:categoryUrl',
+                  path: ':categoryUrl',
                   element: <CategoryProjects/>
                 },
                 {
-                  path: '/:categoryUrl/:projectUrl',
+                  path: ':categoryUrl/:projectUrl',
                   element: <Project/>
                 }
               ]
             }
           ]
         }
-      ])}/>
+      ], {
+        basename: process.env.REACT_APP_BASE_URL
+      })}/>
     </React.StrictMode>
 );

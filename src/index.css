@@ -1,0 +1,36 @@
+@import-normalize;
+
+body {
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DIN Pro', sans-serif;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: #bebebe;
+}
+
+a:hover {
+  color: #bebebe;
+}
+
+.h-text {
+  font-family: 'DIN Pro', sans-serif;
+  font-weight: bold;
+  font-size: 1.05rem;
+  transition: color .5s;
+}
+
+.p-text {
+  font-family: 'DIN Pro', sans-serif;
+  font-size: 1.05rem;
+  transition: color .5s;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
