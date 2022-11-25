@@ -31,6 +31,18 @@ a:hover {
   transition: color .5s;
 }
 
+.w-70 {
+  width: 70% !important;
+}
+
+.h-10 {
+  height: 10% !important;
+}
+
+.h-20 {
+  height: 20% !important;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

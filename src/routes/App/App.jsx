@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import {Outlet, useLoaderData} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
-import {AppContext} from '../../contexts/AppContext';
 import {PropertyService} from '../../api/PropertyService';
 import {SectionService} from '../../api/SectionService';
 import {mapSettings} from './settingsMapper';
@@ -28,21 +27,19 @@ const App = () => {
   const {settings, sections} = useLoaderData();
   const [projectTitle, setProjectTitle] = useState(null);
 
-  return (
-      <AppContext.Provider value={{
-        settings: settings,
-        sections: sections,
-        projectTitle: projectTitle,
-        setProjectTitle: setProjectTitle
-      }}>
-        <Helmet>
-          <meta name="description" content={settings.meta.description}/>
-          <meta name="keywords" content={settings.meta.keywords}/>
-          <title>{`${settings.username} ${settings.lastName}`}</title>
-        </Helmet>
-        <Outlet/>
-      </AppContext.Provider>
-  );
+  return (<>
+    <Helmet>
+      <meta name="description" content={settings.meta.description}/>
+      <meta name="keywords" content={settings.meta.keywords}/>
+      <title>{`${settings.username} ${settings.lastName}`}</title>
+    </Helmet>
+    <Outlet context={{
+      settings: settings,
+      sections: sections,
+      projectTitle: projectTitle,
+      setProjectTitle: setProjectTitle
+    }}/>
+  </>);
 };
 
 export default App;

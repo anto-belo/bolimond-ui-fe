@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import App, {__loader as appLoader} from './routes/App/App';
-import Carousel from './routes/Carousel/Carousel';
+import Carousel, {__loader as carouselLoader} from './routes/Carousel/Carousel';
 import CategoryProjects from './routes/Projects/CategoryProjects';
 import Error from './routes/Error/Error';
 import Project from './routes/Project/Project';
@@ -26,7 +26,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           children: [
             {
               index: true,
-              element: <Carousel/>
+              element: <Carousel/>,
+              loader: carouselLoader
             },
             {
               path: ':sectionUrl',

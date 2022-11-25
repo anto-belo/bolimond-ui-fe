@@ -1,0 +1,23 @@
+.carousel-header {
+  height: 10vh;
+  min-height: 75px;
+  z-index: 1;
+}
+
+.carousel-footer {
+  height: 5vh;
+  min-height: 40px;
+}
+
+.carousel-header, .carousel-footer {
+  width: 100%;
+  position: fixed;
+  transition: background-color .5s;
+}
+
+.carousel-item-image {
+  height: 100vh;
+  /*min-height: 350px;*/
+  background-size: cover;
+  background-position: center;
+}
