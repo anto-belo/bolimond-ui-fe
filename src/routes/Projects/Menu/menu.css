@@ -1,0 +1,33 @@
+.header-with-project {
+  min-height: 115px !important;
+  height: 16.1vh;
+}
+
+.header-with-category {
+  min-height: 95px !important;
+  height: 13.3vh;
+}
+
+.mt-with-interlevel-separator {
+  margin-top: -.63rem;
+}
+
+.mt-without-interlevel-separator {
+  margin-top: -.25rem;
+}
+
+.separator {
+  width: 2px;
+  display: inline-block;
+  transition: background-color .5s;
+}
+
+.default-separator {
+  min-height: 14px !important;
+  height: 2vh;
+}
+
+.interlevel-separator {
+  min-height: 25px !important;
+  height: 3.5vh;
+}
