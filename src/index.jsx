@@ -6,7 +6,7 @@ import Carousel, {__loader as carouselLoader} from './routes/Carousel/Carousel';
 import CategoryProjects from './routes/Projects/CategoryProjects';
 import Error from './routes/Error/Error';
 import Project from './routes/Project/Project';
-import Projects from './routes/Projects/Projects';
+import Projects, {__loader as projectsLoader} from './routes/Projects/Projects';
 import SectionProjects from './routes/Projects/SectionProjects';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
@@ -32,6 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             {
               path: ':sectionUrl',
               element: <Projects/>,
+              loader: projectsLoader,
               children: [
                 {
                   index: true,
