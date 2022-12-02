@@ -1,0 +1,9 @@
+.content-height {
+  min-height: 82vh;
+}
+
+@media (min-width: 992px) {
+  .content-height {
+    min-height: 90vh;
+  }
+}

@@ -1,3 +1,4 @@
+/* globals WeakRef */
 import {useEffect, useState} from 'react';
 import {useOutletContext, useParams} from 'react-router-dom';
 import {CategoryService} from '../../../api/CategoryService';
@@ -17,24 +18,29 @@ const Section = ({title, url, isLast}) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const section = ctx.sections.find(s => s.url === sectionUrl);
-
-    if (section) {
-      if (!section.custom) {
-        CategoryService.getByPageOrdered(0, 5, section.id)
-        .then((r) => setCategories(r.data))
-        .catch((e) => {
-          throw new Error(e.response.data || e.message);
-        });
-        return () => setCategories([]);
-      }
+    if (url !== sectionUrl) {
       return;
     }
-    throw new Error(`Unknown section url: ${sectionUrl}`);
-  }, [ctx.sections, sectionUrl]);
+    const thisSection = ctx.sections.find(s => s.url === sectionUrl);
+    if (thisSection.custom) {
+      return;
+    }
 
-  const isLastSection
-      = sectionUrl === ctx.sections[ctx.sections.length - 1].url;
+    if (!thisSection.categoriesRef?.deref()) {
+      CategoryService.getByPageOrdered(0, 5, thisSection.id)
+      .then((r) => {
+        ctx.sections.find(s => s.id === thisSection.id).categoriesRef
+            = new WeakRef(r.data);
+        ctx.setSections([...ctx.sections]);
+      })
+      .catch(() => {
+        throw new Error('An error occurred. '
+            + 'Try to reload the page or contact administrator');
+      });
+    } else {
+      setCategories(thisSection.categoriesRef.deref());
+    }
+  }, [ctx, sectionUrl, url]);
 
   return (
       <div className={`d-inline-block position-relative ${linkOffset(isLast)}`}>
@@ -43,13 +49,13 @@ const Section = ({title, url, isLast}) => {
         {url === sectionUrl && categories.length !== 0 &&
             <div className={`vw-100 position-absolute end-0 d-flex
                              justify-content-end align-items-end 
-                             ${interlevelOffset(!isLastSection)}`}>
+                             ${interlevelOffset(!isLast)}`}>
               {categories
               .sort((c1, c2) => c2['seqPosition'] - c1['seqPosition'])
               .map((c, i) =>
                   <Category key={i} title={c.title} url={c.url}
                             isLast={i === categories.length - 1}
-                            isInLastSection={isLastSection}/>)}
+                            isInLastSection={isLast}/>)}
             </div>}
       </div>
   );

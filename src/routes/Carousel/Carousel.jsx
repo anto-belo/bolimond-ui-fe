@@ -33,7 +33,6 @@ const Carousel = () => {
       (page, size) => DataBlockService.getMainPageBlocksOrdered(page, size),
       1,
       SLIDES_PAGE_SIZE,
-      slides,
       setSlides);
 
   const slidesDivRef = useRef(null);

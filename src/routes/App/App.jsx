@@ -15,8 +15,8 @@ export async function __loader() {
         + 'Try to reload the page or contact administrator');
   }
   const settings = mapSettings(response[0].value.data);
-  const sections = response[1].value.data;
-  return {settings, sections};
+  const initSections = response[1].value.data;
+  return {settings, initSections};
 }
 
 /**
@@ -24,7 +24,8 @@ export async function __loader() {
  * @since SNAPSHOT-0.0.1
  */
 const App = () => {
-  const {settings, sections} = useLoaderData();
+  const {settings, initSections} = useLoaderData();
+  const [sections, setSections] = useState(initSections);
   const [projectTitle, setProjectTitle] = useState(null);
 
   return (<>
@@ -36,6 +37,7 @@ const App = () => {
     <Outlet context={{
       settings: settings,
       sections: sections,
+      setSections: setSections,
       projectTitle: projectTitle,
       setProjectTitle: setProjectTitle
     }}/>

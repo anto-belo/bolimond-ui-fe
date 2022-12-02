@@ -1,15 +1,18 @@
 import {useState} from 'react';
 import {Outlet, useOutletContext} from 'react-router-dom';
+import {IconService} from '../../api/IconService';
 import Menu from './Menu/Menu';
 import Links from './Links/Links';
-import {IconService} from '../../api/IconService';
+import './projects.css';
 
 export async function __loader() {
-  let iconsResponse = await IconService.getByPageOrdered(0, 20);
+  const iconsResponse = await IconService.getByPageOrdered(0, 20);
 
   if (iconsResponse.status !== 200) {
-    console.error('Failed to load icons');
+    throw new Error('An error occurred. '
+        + 'Try to reload the page or contact administrator');
   }
+
   const icons = iconsResponse.data;
   return {icons};
 }
@@ -24,7 +27,7 @@ const Projects = () => {
   const [linksVisible, setLinksVisible] = useState(true);
 
   return (<>
-    <div style={{minHeight: 'calc(100vh - 70px)'}}>
+    <div className="content-height">
       <Menu/>
       <div className="w-70 mx-auto mt-4">
         <Outlet context={{...ctx, setLinksVisible: setLinksVisible}}/>

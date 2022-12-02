@@ -13,7 +13,7 @@ const Menu = () => {
   const {projectUrl} = useParams();
 
   return (
-      <header className={`w-100 top-0 position-fixed 
+      <header className={`w-100 top-0 start-0 position-sticky bg-white
                           ${headerHeight(projectUrl)}`}>
         <div className="w-70 h-100 mx-auto pt-4 d-flex justify-content-between">
           <NavLink to="/" className="h-text">

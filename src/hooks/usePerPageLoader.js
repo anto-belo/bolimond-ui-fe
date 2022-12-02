@@ -4,8 +4,7 @@ import {useEffect, useRef, useState} from 'react';
  * @author Anton Belousov
  * @since SNAPSHOT-0.0.1
  */
-export const usePerPageLoader = (
-    apiCall, startPage, pageSize, entities, setEntities) => {
+export const usePerPageLoader = (apiCall, startPage, pageSize, setEntities) => {
   const [allLoaded, setAllLoaded] = useState(false);
   const [nextPage, setNextPage] = useState(startPage);
 
@@ -20,16 +19,25 @@ export const usePerPageLoader = (
     apiCall(nextPage, pageSize).then(r => {
       const dbEntities = r.data;
       setAllLoaded(dbEntities.length < pageSize);
-      setEntities([...entities, ...dbEntities]);
-    }).catch(e => console.error(e.message));
-  }, [nextPage]);
+      setEntities(entities => [...entities, ...dbEntities]);
+    }).catch(e => {
+      throw new Error(e.message);
+    });
+  }, [apiCall, nextPage, pageSize, setEntities]);
 
   function loadNextPage() {
     if (!allLoaded) {
       _prevent.current = false;
-      setNextPage(nextPage + 1);
+      setNextPage(nextPage => nextPage + 1);
     }
   }
 
-  return [allLoaded, loadNextPage];
+  function resetState(newNextPage, newEntities) {
+    _prevent.current = false;
+    setAllLoaded(false);
+    setEntities(newEntities);
+    setNextPage(newNextPage);
+  }
+
+  return [allLoaded, loadNextPage, resetState];
 };
