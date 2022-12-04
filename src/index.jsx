@@ -13,7 +13,8 @@ import SectionProjects, {
   __loader as sectionProjectsLoader
 } from './routes/Projects/SectionProjects';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import './css/bs.extensions.css';
+import './css/index.css';
 
 /**
  * @author Anton Belousov

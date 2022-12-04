@@ -1,0 +1,23 @@
+.w-70 {
+  width: 70% !important;
+}
+
+.h-10 {
+  height: 10% !important;
+}
+
+.h-20 {
+  height: 20% !important;
+}
+
+.bg-position-center {
+  background-position: center !important;
+}
+
+.bg-size-cover {
+  background-size: cover !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
