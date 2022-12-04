@@ -3,7 +3,7 @@ import {useOutletContext, useParams} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
 import {ProjectService} from '../../api/ProjectService';
 import {SectionService} from '../../api/SectionService';
-import ProjectsGrid from './ProjectsGrid';
+import ProjectsGrid from './ProjectsGrid/ProjectsGrid';
 
 export async function __loader({params}) {
   const projectsResponse = await ProjectService.getProjectCards(null,

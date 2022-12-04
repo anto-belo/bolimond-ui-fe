@@ -1,0 +1,4 @@
+.card-name {
+  font-size: 1.2rem;
+  transition: background-color .3s;
+}

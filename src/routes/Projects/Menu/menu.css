@@ -1,11 +1,11 @@
 .header-with-project {
-  min-height: 115px !important;
-  height: 16.1vh;
+  min-height: 95px !important;
+  height: 13.3vh;
 }
 
 .header-with-category {
-  min-height: 95px !important;
-  height: 13.3vh;
+  min-height: 75px !important;
+  height: 10.5vh;
 }
 
 .mt-with-interlevel-separator {
